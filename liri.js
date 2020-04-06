@@ -23,9 +23,9 @@ var parameter = process.argv.slice(3).join(" ") || "";
 // Venue location
 // Date of the Event (use moment to format this as "MM/DD/YYYY")
 function bandsintown(artist) {
-    console.log("Artist", artist, "string");
+    // console.log("Artist", artist, "string");
     if (artist === "") {
-        artist = "Pitbull";
+        artist = "Lady Gaga";
     };
     var bandURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
     axios.get(bandURL).then(
@@ -115,7 +115,6 @@ function movies(movie) {
     // Using the fs Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
     // It should run spotify-this-song for "I Want it That Way," as follows the text in random.txt.
     // Edit the text in random.txt to test out the feature for movie-this and concert-this.
-
 }
 function dowhat() {
     fs.readFile("random.txt", "utf-8", function (err, data) {
