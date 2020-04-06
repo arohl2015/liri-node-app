@@ -23,8 +23,8 @@ var parameter = process.argv.slice(3).join(" ") || "";
 // Venue location
 // Date of the Event (use moment to format this as "MM/DD/YYYY")
 function bandsintown(artist) {
-    console.log("Artist",artist,"string");
-    if (artist == "") {
+    console.log("Artist", artist, "string");
+    if (artist === "") {
         artist = "Pitbull";
     };
     var bandURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
@@ -36,74 +36,105 @@ function bandsintown(artist) {
                 console.log("Venue: " + concerts[i].venue.name);
                 console.log("Location: " + concerts[i].venue.city + "," + concerts[i].venue.country);
                 console.log("Date: " + moment(concerts[i].datetime).format("MM/DD/YYYY"));
-                console.log("\n--------------\n"); }
+                console.log("\n--------------\n");
+            }
         }
     );
 };
-
-function mapartist (artist) {
-return artist.name
+// spotify-this-song
+// Artist(s)
+// The song's name
+// A preview link of the song from Spotify
+// The album that the song is from
+// If no song is provided then your program will default to "The Sign" by Ace of Base.
+function mapartist(artist) {
+    return artist.name
 }
 
-function songs (song) {
+function songs(song) {
     if (song === "") {
-        song = "The Sign";
+        song = "The Sign, Ace of Base";
     };
 
-    spotify.search({ type: 'track', query: song }, function(err, data) {
+    spotify.search({ type: 'track', query: song }, function (err, data) {
         if (err) {
-          return console.log('Error occurred: ' + err);
+            return console.log('Error occurred: ' + err);
         }
-       
-    //   console.log(data.tracks.items);
-      var list = data.tracks.items;
-      for (let i = 0; i < list.length; i++) {
-        console.log("Artist: " + list[i].artists.map(mapartist));
-        console.log("Song: " + list[i].name);
-        console.log("Preview Link: " + list[i].preview_url);
-        console.log("Album: " + list[i].album.name);
-        console.log("\n--------------\n");
-      }  
+
+        //   console.log(data.tracks.items);
+        var list = data.tracks.items;
+        for (let i = 0; i < list.length; i++) {
+            console.log("Artist: " + list[i].artists.map(mapartist));
+            console.log("Song: " + list[i].name);
+            console.log("Preview Link: " + list[i].preview_url);
+            console.log("Album: " + list[i].album.name);
+            console.log("\n--------------\n");
+        }
     });
 }
-
-function movies (movie) {
+// movie-this  
+// * Title of the movie.
+//   * Year the movie came out.
+//   * IMDB Rating of the movie.
+//   * Rotten Tomatoes Rating of the movie.
+//   * Country where the movie was produced.
+//   * Language of the movie.
+//   * Plot of the movie.
+//   * Actors in the movie.
+function movies(movie) {
     if (movie === "") {
         movie = "Mr. Nobody";
     };
-    var movieURL = "http://www.omdbapi.com/?t=" +movie+ "&y=&plot=short&apikey=trilogy";
+    var movieURL = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
     axios.get(movieURL).then(
         function (response) {
-    console.log(response);
-    console.log("Title: ",);
-    console.log("Year Released: ",);
-    console.log("IMDB Rating: ",);
-    console.log("Rotten Tomatoes Rating: ",);
-    console.log("Country Produced:",);
-    console.log("Language: ");
-    console.log("Plot: ",);
-    console.log("Actors: ",);
-    console.log("\n--------------\n");
-});
+            var movies = response.data;
+            // console.log(response.data);
+            console.log("Title: " + response.data.Title);
+            console.log("Year Released: " + response.data.Year);
+            console.log("IMDB Rating: " + response.data.Ratings[0].Value);
+            console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
+            console.log("Country Produced:" + response.data.Country);
+            console.log("Language: " + response.data.Language);
+            console.log("Plot: " + response.data.Plot);
+            console.log("Actors: " + response.data.Actors);
+            console.log("\n--------------\n");
+            //attempted a for loop but it wouldn't console.log the data - moved to the format above
+            // for (let i = 0; i < movies.length; i++) {
+            // console.log("Title: " + movies[i].Title);
+            // console.log("Year Released: " + movies[i].Year);
+            // console.log("IMDB Rating: " + movies[i].Ratings[0].Value);
+            // console.log("Rotten Tomatoes Rating: " + movies[i].Ratings[1].Value);
+            // console.log("Country Produced:" + movies[i].Country);
+            // console.log("Language: " + movies[i].Language);
+            // console.log("Plot: " + movies[i].Plot);
+            // console.log("Actors: " + movies[i].Actors);
+            // console.log("\n--------------\n");
+            // }
+        });
+    // Using the fs Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
+    // It should run spotify-this-song for "I Want it That Way," as follows the text in random.txt.
+    // Edit the text in random.txt to test out the feature for movie-this and concert-this.
 
-} 
-function dowhat () {
+}
+function dowhat() {
     fs.readFile("random.txt", "utf8", function (err, data) {
         if (err) {
             return console.log(err);
-        }});
+        }
+    });
 }
 
 if (command === "concert-this") {
     bandsintown(parameter)
 }
-    
+
 else if (command === "spotify-this-song") {
     songs(parameter)
 
 } else if (command === "movie-this") {
     movies(parameter)
-    
+
 } else if (command === "do-what-it-says") {
     dowhat()
 } else {
