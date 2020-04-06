@@ -118,10 +118,12 @@ function movies(movie) {
 
 }
 function dowhat() {
-    fs.readFile("random.txt", "utf8", function (err, data) {
+    fs.readFile("random.txt", "utf-8", function (err, data) {
         if (err) {
             return console.log(err);
         }
+        var random = data.split(",");
+        songs(random[1]);
     });
 }
 
@@ -137,7 +139,8 @@ else if (command === "spotify-this-song") {
 
 } else if (command === "do-what-it-says") {
     dowhat()
-} else {
+} 
+else {
     console.log("invalid choice");
     process.exit(0);
 }
