@@ -17,14 +17,14 @@ This app can take in one of the following commands:
  ### Running the App:
 
  1. `node liri.js concert-this <artist/band name here>`
- Shows:
+ 
      * Name of the venue
      * Venue location
      * Date of the Event (use moment to format this as "MM/DD/YYYY")
      * Will default to Lady Gaga if the user does not input an artist/band name
 
 EXAMPLES: 
-<img src ="images/concert-this default.png">
+![DefaultConcert](/images/concert-this default.png)
 
-<img src ="images/concert-this search.png">
+![UserConcert](/images/concert-this search.png)
 
