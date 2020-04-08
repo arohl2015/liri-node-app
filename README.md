@@ -17,31 +17,37 @@ This app can take in one of the following commands:
  ### Running the App:
 
  1. `node liri.js concert-this <artist/band name here>`
- 
+
+##### This command uses AXIOS to call the Bandsintown API to provide the following:
+
      * Name of the venue
      * Venue location
      * Date of the Event (use moment to format this as "MM/DD/YYYY")
 
     *If no artist/band is provided, LIRI will default to Lady Gaga.*
 
-![Default](/images/concert-this default.PNG)
+![Default](/images/concertdefault.PNG)
 
-![User](/images/concert-this search.PNG)
+![User](/images/concertsearch.PNG)
 
 2. `node liri.js spotify-this-song '<song name here>'`
+
+##### This command uses the node-spotify-API to call the Spotify API to provide the following:
 
      * Artist(s)
      * The song's name
      * A preview link of the song from Spotify
      * The album that the song is from
 
-   *If the user doesn't type a movie in, LIRI will default to "The Sign" by Ace of Base.*
+   *If the user doesn't type a song in, LIRI will default to "The Sign" by Ace of Base.*
 
 ![Defaultsong](/images/spotifydefault.PNG)
 
 ![Usersong](/images/spotifysearch.PNG)
 
 3. `node liri.js movie-this '<movie name here>'`
+
+##### This command uses AXIOS to call the OMDB API to provide the following:
 
      * Title of the movie.
      * Year the movie came out.
@@ -76,4 +82,7 @@ This app can take in one of the following commands:
 -   Spotify API
 -	OMDB API
 -	Bands in Town API
+
+
+
 
