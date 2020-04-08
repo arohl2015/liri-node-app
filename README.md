@@ -24,9 +24,9 @@ This app can take in one of the following commands:
 
     *If no artist/band is provided, LIRI will default to Lady Gaga.*
 
-![Default](images\concert-this default.PNG)
+![Default](/images/concert-this default.PNG)
 
-![User](images\concert-this search.PNG)
+![User](/images/concert-this search.PNG)
 
 2. `node liri.js spotify-this-song '<song name here>'`
 
@@ -37,9 +37,9 @@ This app can take in one of the following commands:
 
    *If the user doesn't type a movie in, LIRI will default to "The Sign" by Ace of Base.*
 
-![Defaultsong](images\spotifydefault.PNG)
+![Defaultsong](/images/spotifydefault.PNG)
 
-![Usersong](images\spotifysearch.PNG)
+![Usersong](/images/spotifysearch.PNG)
 
 3. `node liri.js movie-this '<movie name here>'`
 
@@ -54,9 +54,9 @@ This app can take in one of the following commands:
 
    *If the user doesn't type a movie in, LIRI will default to output data for the movie 'Mr. Nobody.'*
 
-![Defaultmovie](images\moviedefault.PNG)
+![Defaultmovie](/images/moviedefault.PNG)
 
-![Usermovie](images\moviesearch.PNG)
+![Usermovie](/images/moviesearch.PNG)
 
 4. `node liri.js do-what-it-says`
 
@@ -64,7 +64,7 @@ This app can take in one of the following commands:
 
    *In this case, it will run `spotify-this-song` for "I Want it That Way" by The Backstreet Boys.*
 
-![Dowhat](images\dowhatitsays.PNG)
+![Dowhat](/images/dowhatitsays.PNG)
 
 ### Technologies Used:
 -	Javascript
