@@ -14,6 +14,7 @@ var moment = require("moment");
 // Takes in all of the command line arguments listed below
 var command = process.argv[2];
 var parameter = process.argv.slice(3).join(" ") || "";
+pass (command, parameter);
 
 //Make it so liri.js can take in each of the following commands:
 
@@ -122,25 +123,28 @@ function dowhat() {
             return console.log(err);
         }
         var random = data.split(",");
-        songs(random[1]);
+        pass(random[0], random[1]);
     });
 }
 
-if (command === "concert-this") {
-    bandsintown(parameter)
+function pass (command, parameter) {
+    if (command === "concert-this") {
+        bandsintown(parameter)
+    }
+    
+    else if (command === "spotify-this-song") {
+        songs(parameter)
+    
+    } else if (command === "movie-this") {
+        movies(parameter)
+    
+    } else if (command === "do-what-it-says") {
+        dowhat()
+    } 
+    else {
+        console.log("invalid choice");
+        process.exit(0);
+    }
 }
 
-else if (command === "spotify-this-song") {
-    songs(parameter)
-
-} else if (command === "movie-this") {
-    movies(parameter)
-
-} else if (command === "do-what-it-says") {
-    dowhat()
-} 
-else {
-    console.log("invalid choice");
-    process.exit(0);
-}
 
